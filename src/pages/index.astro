@@ -127,7 +127,9 @@ import Layout from '../layouts/Layout.astro';
         <section id="contacto" class="py-28 px-6 bg-zinc-900">
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                 <div>
-                    <h2 class="text-6xl font-black text-white italic uppercase mb-7 tracking-tighter leading-none">Solicite su <br/> <span class="text-rose-600">Cotización</span></h2>
+                    <h2 class="text-5xl md:text-6xl font-black uppercase tracking-tighter text-white break-words px-2 md:px-4 leading-none mb-6">
+                        Solicite su <span class="text-rose-600 block md:inline">Cotización</span>
+                    </h2>
                     <p class="text-zinc-400 text-xl font-light mb-12 leading-relaxed">Complete el formulario y reciba su tarifa personalizada por WhatsApp.</p>
                     <div class="space-y-6 text-zinc-300">
                         <div class="flex items-center gap-5 italic uppercase font-bold text-sm tracking-widest"><i class="fa-solid fa-location-dot text-rose-600 text-xl"></i><span>CDMX Y TODA EL AREA METROPOLITANA</span></div>
@@ -135,7 +137,7 @@ import Layout from '../layouts/Layout.astro';
                     </div>
                 </div>
 
-                <div class="bg-zinc-950 p-10 rounded-[2.5rem] border border-white/5 shadow-2xl">
+                <div class="bg-zinc-950 p-4 md:p-10 mx-2 md:mx-0 rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden">
                     <form id="cotizacionForm" class="space-y-6">
                         <div>
                             <label class="block text-zinc-500 text-xs font-black uppercase mb-2 ml-1 tracking-widest">Nombre Completo</label>
@@ -149,11 +151,19 @@ import Layout from '../layouts/Layout.astro';
                             <label class="block text-zinc-500 text-xs font-black uppercase mb-2 ml-1 tracking-widest">Destino</label>
                             <input type="text" id="destino" required class="w-full bg-zinc-900 border border-white/5 rounded-xl px-5 py-4 text-white focus:border-rose-600 outline-none transition" placeholder="Punto de llegada" />
                         </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <input type="date" id="fecha" required class="w-full bg-zinc-900 border border-white/5 rounded-xl px-5 py-4 text-white focus:border-rose-600 outline-none [color-scheme:dark]" />
-                            <input type="time" id="hora" required class="w-full bg-zinc-900 border border-white/5 rounded-xl px-5 py-4 text-white focus:border-rose-600 outline-none [color-scheme:dark]" />
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="w-full">
+                            <label class="block text-zinc-500 text-[10px] font-black uppercase mb-1 ml-1 tracking-widest">Fecha</label>
+                            <input type="date" id="fecha" required class="w-full bg-zinc-900 border border-white/5 rounded-xl px-3 py-4 text-white focus:border-rose-600 outline-none transition appearance-none text-sm" />
                         </div>
-                        <button type="submit" class="w-full bg-rose-600 text-white font-black italic uppercase py-5 rounded-2xl flex items-center justify-center gap-3 hover:bg-rose-700 transition shadow-lg shadow-rose-900/20 transform hover:-translate-y-1">
+
+                        <div class="w-full">
+                            <label class="block text-zinc-500 text-[10px] font-black uppercase mb-1 ml-1 tracking-widest">Hora</label>
+                            <input type="time" id="hora" required class="w-full bg-zinc-900 border border-white/5 rounded-xl px-3 py-4 text-white focus:border-rose-600 outline-none transition appearance-none text-sm" />
+                        </div>
+
+                        <button type="submit" class="w-full bg-rose-600 text-white font-black italic uppercase py-5 rounded-2xl flex items-center justify-center gap-3 hover:bg-rose-700 transition shadow-lg shadow-rose-900/20 transform hover:-translate-y-1 active:scale-95">
                             <i class="fa-brands fa-whatsapp text-xl"></i> Cotizar por WhatsApp
                         </button>
                     </form>
@@ -199,7 +209,7 @@ import Layout from '../layouts/Layout.astro';
         slider?.addEventListener('mouseleave', () => isPaused = false);
         startAutoScroll();
 
-// LÓGICA WHATSAPP - VERSIÓN DEFINITIVA PARA EMOJIS
+        // LÓGICA WHATSAPP
         const form = document.getElementById('cotizacionForm') as HTMLFormElement;
         form?.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -211,7 +221,6 @@ import Layout from '../layouts/Layout.astro';
             
             const telefono = "525574163390"; 
 
-            // Redactamos el texto con emojis normales
             const textoNatural = `Hola, ¿qué tal? 👋 Me gustaría solicitar una cotización para un traslado con *LG Viajes*. 
 
 Le comparto los detalles de mi viaje: 
@@ -224,33 +233,35 @@ Le comparto los detalles de mi viaje:
 
 ¿Me podrían confirmar disponibilidad y costo? Quedo al pendiente, muchas gracias.`;
 
-            // La clave es aplicar encodeURIComponent a TODO el bloque de texto junto
             const mensajeFinal = encodeURIComponent(textoNatural);
-            
-            // Usamos api.whatsapp.com que suele ser más amigable con los emojis en PC
             window.open(`https://api.whatsapp.com/send?phone=${telefono}&text=${mensajeFinal}`, '_blank');
         });
-		// Lógica para el Menú Móvil
-const menuBtn = document.getElementById('menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-const mobileLinks = document.querySelectorAll('.mobile-link');
 
-// Abrir/Cerrar al dar clic al botón
-menuBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-});
+        // Menú Móvil
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
-// Cerrar el menú automáticamente al hacer clic en un enlace (para que baje a la sección)
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu?.classList.add('hidden');
-    });
-});
+        menuBtn?.addEventListener('click', () => {
+            mobileMenu?.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu?.classList.add('hidden');
+            });
+        });
     </script>
 </Layout>
 
 <style is:global>
     .scrollbar-hide::-webkit-scrollbar { display: none; }
     .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-    html { scroll-behavior: smooth; }
+    
+    html, body { 
+        scroll-behavior: smooth;
+        overflow-x: hidden; /* Esto evita que la página "baile" hacia los lados */
+        position: relative;
+        max-width: 100%;
+    }
 </style>
