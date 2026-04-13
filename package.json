@@ -2,19 +2,17 @@
   "name": "evolved-eclipse",
   "type": "module",
   "version": "0.0.1",
-  "engines": {
-  "node": ">=18.0.0"
-}
   "scripts": {
     "dev": "astro dev",
+    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/tailwind": "^6.0.2",
-    "@tailwindcss/postcss": "^4.2.2",
-    "astro": "^6.1.5",
-    "tailwindcss": "^4.2.2"
+    "astro": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0" 
   }
 }
