@@ -1,0 +1,72 @@
+---
+import '../styles/global.css';
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        
+        <title>{title}</title>
+        <meta name="description" content="LG Viajes: Traslados ejecutivos seguros y puntuales en CDMX y EDOMEX. Servicio 24/7, confort y conductores certificados. ¡Cotiza por WhatsApp!" />
+        <meta name="keywords" content="transporte ejecutivo, traslados cdmx, transporte edomex, viajes aeropuerto, lg viajes, chofer privado cdmx" />
+        <meta name="author" content="LG Viajes" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="LG Viajes | Traslados Seguros CDMX y EDOMEX" />
+        <meta property="og:description" content="Servicio de transporte privado con confort y seguridad garantizada. Disponible 24/7 para tus traslados ejecutivos y personales." />
+        <meta property="og:image" content="/images/og-image.webp" /> <meta property="og:url" content="https://tu-dominio.com" />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content="LG Viajes | Seguridad y Puntualidad" />
+        <meta property="twitter:description" content="Traslados ejecutivos en CDMX y EDOMEX." />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    </head>
+    <body class="bg-zinc-950 text-white selection:bg-rose-600/30">
+        <slot /> 
+    </body>
+</html>
+
+<style is:global>
+    :root {
+        --accent: 225, 29, 72; /* Color rose-600 en RGB */
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100%;
+        font-family: 'Inter', system-ui, sans-serif;
+        scroll-behavior: smooth;
+    }
+
+    /* Mejora el scrollbar para que se vea premium */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #09090b;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #27272a;
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #e11d48;
+    }
+</style>
