@@ -125,51 +125,61 @@ import Layout from '../layouts/Layout.astro';
         </section>
 
         <section id="contacto" class="py-28 px-6 bg-zinc-900">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[40%_60%] gap-12 items-center">
+        
+        <div class="px-2 md:px-0">
+            <h2 class="text-5xl md:text-6xl font-black uppercase tracking-tighter text-white leading-none mb-6">
+                Solicite su <span class="text-rose-600 block md:inline">Cotización</span>
+            </h2>
+            <p class="text-zinc-400 text-xl font-light mb-12 leading-relaxed">
+                Complete el formulario y reciba su tarifa personalizada por WhatsApp.
+            </p>
+            <div class="space-y-6 text-zinc-300">
+                <div class="flex items-center gap-5 italic uppercase font-bold text-sm tracking-widest">
+                    <i class="fa-solid fa-location-dot text-rose-600 text-xl"></i>
+                    <span>CDMX Y TODA EL ÁREA METROPOLITANA</span>
+                </div>
+                <div class="flex items-center gap-5 italic uppercase font-bold text-sm tracking-widest">
+                    <i class="fa-regular fa-clock text-rose-600 text-xl"></i>
+                    <span>Disponibilidad 24/7</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-zinc-950 p-6 md:p-12 rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden">
+            <form id="cotizacionForm" class="space-y-6">
                 <div>
-                    <h2 class="text-5xl md:text-6xl font-black uppercase tracking-tighter text-white break-words px-2 md:px-4 leading-none mb-6">
-                        Solicite su <span class="text-rose-600 block md:inline">Cotización</span>
-                    </h2>
-                    <p class="text-zinc-400 text-xl font-light mb-12 leading-relaxed">Complete el formulario y reciba su tarifa personalizada por WhatsApp.</p>
-                    <div class="space-y-6 text-zinc-300">
-                        <div class="flex items-center gap-5 italic uppercase font-bold text-sm tracking-widest"><i class="fa-solid fa-location-dot text-rose-600 text-xl"></i><span>CDMX Y TODA EL AREA METROPOLITANA</span></div>
-                        <div class="flex items-center gap-5 italic uppercase font-bold text-sm tracking-widest"><i class="fa-regular fa-clock text-rose-600 text-xl"></i><span>Disponibilidad 24/7</span></div>
+                    <label class="block text-zinc-500 text-xs font-black uppercase mb-2 ml-1 tracking-widest">Nombre Completo</label>
+                    <input type="text" id="nombre" required class="w-full bg-zinc-900 border border-white/5 rounded-xl px-5 py-4 text-white focus:border-rose-600 outline-none transition" placeholder="¿Cómo te llamas?" />
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-zinc-500 text-xs font-black uppercase mb-2 ml-1 tracking-widest">Origen</label>
+                        <input type="text" id="origen" required class="w-full bg-zinc-900 border border-white/5 rounded-xl px-5 py-4 text-white focus:border-rose-600 outline-none transition" placeholder="Punto de partida" />
+                    </div>
+                    <div>
+                        <label class="block text-zinc-500 text-xs font-black uppercase mb-2 ml-1 tracking-widest">Destino</label>
+                        <input type="text" id="destino" required class="w-full bg-zinc-900 border border-white/5 rounded-xl px-5 py-4 text-white focus:border-rose-600 outline-none transition" placeholder="Punto de llegada" />
                     </div>
                 </div>
 
-                <div class="bg-zinc-950 p-4 md:p-10 mx-2 md:mx-0 rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden">
-                    <form id="cotizacionForm" class="space-y-6">
-                        <div>
-                            <label class="block text-zinc-500 text-xs font-black uppercase mb-2 ml-1 tracking-widest">Nombre Completo</label>
-                            <input type="text" id="nombre" required class="w-full bg-zinc-900 border border-white/5 rounded-xl px-5 py-4 text-white focus:border-rose-600 outline-none transition" placeholder="¿Cómo te llamas?" />
-                        </div>
-                        <div>
-                            <label class="block text-zinc-500 text-xs font-black uppercase mb-2 ml-1 tracking-widest">Origen</label>
-                            <input type="text" id="origen" required class="w-full bg-zinc-900 border border-white/5 rounded-xl px-5 py-4 text-white focus:border-rose-600 outline-none transition" placeholder="Punto de partida" />
-                        </div>
-                        <div>
-                            <label class="block text-zinc-500 text-xs font-black uppercase mb-2 ml-1 tracking-widest">Destino</label>
-                            <input type="text" id="destino" required class="w-full bg-zinc-900 border border-white/5 rounded-xl px-5 py-4 text-white focus:border-rose-600 outline-none transition" placeholder="Punto de llegada" />
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="w-full">
-                            <label class="block text-zinc-500 text-[10px] font-black uppercase mb-1 ml-1 tracking-widest">Fecha</label>
-                            <input type="date" id="fecha" required class="w-full bg-zinc-900 border border-white/5 rounded-xl px-3 py-4 text-white focus:border-rose-600 outline-none transition appearance-none text-sm" />
-                        </div>
-
-                        <div class="w-full">
-                            <label class="block text-zinc-500 text-[10px] font-black uppercase mb-1 ml-1 tracking-widest">Hora</label>
-                            <input type="time" id="hora" required class="w-full bg-zinc-900 border border-white/5 rounded-xl px-3 py-4 text-white focus:border-rose-600 outline-none transition appearance-none text-sm" />
-                        </div>
-
-                        <button type="submit" class="w-full bg-rose-600 text-white font-black italic uppercase py-5 rounded-2xl flex items-center justify-center gap-3 hover:bg-rose-700 transition shadow-lg shadow-rose-900/20 transform hover:-translate-y-1 active:scale-95">
-                            <i class="fa-brands fa-whatsapp text-xl"></i> Cotizar por WhatsApp
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="w-full">
+                        <label class="block text-zinc-500 text-[10px] font-black uppercase mb-1 ml-1 tracking-widest">Fecha</label>
+                        <input type="date" id="fecha" required class="w-full bg-zinc-900 border border-white/5 rounded-xl px-3 py-4 text-white focus:border-rose-600 outline-none transition appearance-none text-sm" />
+                    </div>
+                    <div class="w-full">
+                        <label class="block text-zinc-500 text-[10px] font-black uppercase mb-1 ml-1 tracking-widest">Hora</label>
+                        <input type="time" id="hora" required class="w-full bg-zinc-900 border border-white/5 rounded-xl px-3 py-4 text-white focus:border-rose-600 outline-none transition appearance-none text-sm" />
+                    </div>
+                </div> <button type="submit" class="w-full bg-rose-600 text-white font-black italic uppercase py-5 rounded-2xl flex items-center justify-center gap-3 hover:bg-rose-700 transition shadow-lg shadow-rose-900/20 transform hover:-translate-y-1 active:scale-95">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Cotizar por WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
 
         <footer class="py-16 px-6 bg-zinc-950 border-t border-white/5 text-center">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
@@ -195,19 +205,7 @@ import Layout from '../layouts/Layout.astro';
 
     <script>
         const slider = document.querySelector('.scrollbar-hide');
-        let isPaused = false;
-        function startAutoScroll() {
-            setInterval(() => {
-                if (!isPaused && slider) {
-                    const isAtEnd = slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 10;
-                    if (isAtEnd) { slider.scrollTo({ left: 0, behavior: 'smooth' }); } 
-                    else { slider.scrollBy({ left: 400, behavior: 'smooth' }); }
-                }
-            }, 4000);
-        }
-        slider?.addEventListener('mouseenter', () => isPaused = true);
-        slider?.addEventListener('mouseleave', () => isPaused = false);
-        startAutoScroll();
+        
 
         // LÓGICA WHATSAPP
         const form = document.getElementById('cotizacionForm') as HTMLFormElement;
